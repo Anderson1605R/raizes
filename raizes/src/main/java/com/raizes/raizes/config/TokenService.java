@@ -1,0 +1,53 @@
+package com.raizes.raizes.config;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+
+@Service
+public class TokenService {
+
+    // Lê uma chave secreta do seu application.properties (ou usa um padrão caso não encontre)
+    @Value("${api.security.token.secret:raizes-secreta-123}")
+    private String secret;
+
+    // Gera o Token JWT para o usuário
+    public String gerarToken(String email) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            return JWT.create()
+                    .withIssuer("API Raizes do Nordeste")
+                    .withSubject(email)
+                    .withExpiresAt(gerarDataExpiracao())
+                    .sign(algorithm);
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("Erro ao gerar token JWT", exception);
+        }
+    }
+
+    // Valida se o Token é verdadeiro e retorna o email do usuário
+    public String validarToken(String token) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            return JWT.require(algorithm)
+                    .withIssuer("API Raizes do Nordeste")
+                    .build()
+                    .verify(token)
+                    .getSubject();
+        } catch (JWTVerificationException exception) {
+            return "";
+        }
+    }
+
+    // O Token expira em 2 horas
+    private Instant gerarDataExpiracao() {
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+    }
+}
