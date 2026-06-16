@@ -18,7 +18,7 @@ INSERT INTO tb_estoque (unidade_id, produto_id, quantidade) VALUES (2, 3, 100);
 -- 4. Inserindo os Usuários (Simulando LGPD com uma senha que já sofreu Hash e Roles diferentes)
 -- A senha simulada abaixo seria o hash bcrypt para a senha "123456"
 INSERT INTO tb_usuario (nome, email, senha_hash, perfil, pontos_fidelidade) 
-VALUES ('João Silva', 'joao.cliente@email.com', '$2a$10$Wp/2QJpX4QOqM.bLqV6x1.a6Xh7DXZO2bO2p.tH8U8QYgG5P9e8y', 'CLIENTE', 10);
+VALUES ('João Silva', 'joao.cliente@email.com', '$2a$12$L9wPY5h3Td2MW/sVLONI3.BLo99nMvSN.ugNxVxo3t23E32E4t4Me', 'CLIENTE', 10);
 
 INSERT INTO tb_usuario (nome, email, senha_hash, perfil, pontos_fidelidade) 
-VALUES ('Maria Souza', 'maria.gerente@raizes.com', '$2a$10$Wp/2QJpX4QOqM.bLqV6x1.a6Xh7DXZO2bO2p.tH8U8QYgG5P9e8y', 'GERENTE', 0);
+VALUES ('Maria Souza', 'maria.gerente@raizes.com', '$2a$12$lRUQrNzKpvI5I2aFXU4jcueifnZm6tUCfxnG1/GBZT60Af8/j0CLC', 'GERENTE', 0);
