@@ -3,7 +3,7 @@ package com.raizes.raizes.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_pagamento")
+@Table(name = "pagamentos")
 public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,35 @@ public class Pagamento {
     public Pagamento() {
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Pedido getPedido() { return pedido; }
-    public void setPedido(Pedido pedido) { this.pedido = pedido; }
-    public StatusPagamentoEnum getStatusPagamento() { return statusPagamento; }
-    public void setStatusPagamento(StatusPagamentoEnum statusPagamento) { this.statusPagamento = statusPagamento; }
-    public String getMetodo() { return metodo; }
-    public void setMetodo(String metodo) { this.metodo = metodo; }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public StatusPagamentoEnum getStatusPagamento() {
+        return statusPagamento;
+    }
+
+    public void setStatusPagamento(StatusPagamentoEnum statusPagamento) {
+        this.statusPagamento = statusPagamento;
+    }
+
+    public String getMetodo() {
+        return metodo;
+    }
+
+    public void setMetodo(String metodo) {
+        this.metodo = metodo;
+    }
 }

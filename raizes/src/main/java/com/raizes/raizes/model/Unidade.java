@@ -3,7 +3,7 @@ package com.raizes.raizes.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_unidade") // Nome da tabela no banco de dados
+@Table(name = "unidades") // Nome da tabela no banco de dados
 public class Unidade {
 
   @Id

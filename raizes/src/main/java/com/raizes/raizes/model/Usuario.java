@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "usuarios")
 public class Usuario implements UserDetails {
 
     @Id
@@ -56,7 +56,6 @@ public class Usuario implements UserDetails {
         return email;
     }
 
-   
     @Override
     public boolean isAccountNonExpired() {
         return true;

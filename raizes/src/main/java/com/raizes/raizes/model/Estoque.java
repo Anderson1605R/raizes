@@ -3,9 +3,9 @@ package com.raizes.raizes.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_estoque")
+@Table(name = "estoque")
 public class Estoque {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +23,7 @@ public class Estoque {
     // Campo vital para a regra de negócio do controle descentralizado
     @Column(nullable = false)
     private Integer quantidade;
-   
+
     public Estoque() {
     }
 

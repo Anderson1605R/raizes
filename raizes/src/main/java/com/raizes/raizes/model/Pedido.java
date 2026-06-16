@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_pedido")
+@Table(name = "pedidos")
 public class Pedido {
-  
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,22 +47,75 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
-    public Unidade getUnidade() { return unidade; }
-    public void setUnidade(Unidade unidade) { this.unidade = unidade; }
-    public LocalDateTime getDataCriacao() { return dataCriacao; }
-    public void setDataCriacao(LocalDateTime dataCriacao) { this.dataCriacao = dataCriacao; }
-    public StatusPedidoEnum getStatus() { return status; }
-    public void setStatus(StatusPedidoEnum status) { this.status = status; }
-    public Double getValorTotal() { return valorTotal; }
-    public void setValorTotal(Double valorTotal) { this.valorTotal = valorTotal; }
-    public CanalEnum getCanalPedido() { return canalPedido; }
-    public void setCanalPedido(CanalEnum canalPedido) { this.canalPedido = canalPedido; }
-    public List<ItemPedido> getItens() { return itens; }
-    public void setItens(List<ItemPedido> itens) { this.itens = itens; }
-    public Pagamento getPagamento() { return pagamento; }
-    public void setPagamento(Pagamento pagamento) { this.pagamento = pagamento; }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public StatusPedidoEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedidoEnum status) {
+        this.status = status;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public CanalEnum getCanalPedido() {
+        return canalPedido;
+    }
+
+    public void setCanalPedido(CanalEnum canalPedido) {
+        this.canalPedido = canalPedido;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
 }

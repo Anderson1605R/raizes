@@ -3,7 +3,7 @@ package com.raizes.raizes.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_produto")
+@Table(name = "produtos")
 public class Produto {
 
     @Id
