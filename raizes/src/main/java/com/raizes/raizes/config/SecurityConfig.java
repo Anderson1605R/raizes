@@ -29,6 +29,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(req -> {
           // Libera APENAS a rota de login
           req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
+          req.requestMatchers("/error").permitAll(); 
           // Bloqueia todo o resto (exige token)
           req.anyRequest().authenticated();
         })

@@ -1,5 +1,7 @@
 package com.raizes.raizes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class ItemPedido {
     // A qual pedido este item pertence
     @ManyToOne
     @JoinColumn(name = "pedido_id", nullable = false)
+    @JsonIgnore
     private Pedido pedido;
 
     // Qual é o produto

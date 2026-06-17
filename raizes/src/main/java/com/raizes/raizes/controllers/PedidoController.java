@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raizes.raizes.dto.PedidoRequestDTO;
+import com.raizes.raizes.dto.PedidoResponseDTO;
 import com.raizes.raizes.model.CanalEnum;
 import com.raizes.raizes.model.Pedido;
 import com.raizes.raizes.services.PedidoService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -29,6 +32,7 @@ public class PedidoController {
         this.pedidoService = pedidoService;
         this.pedidoRepository = pedidoRepository;
     }
+
     @GetMapping
     public ResponseEntity<List<Pedido>> listarPedidos(@RequestParam(required = false) CanalEnum canalPedido) {
         if (canalPedido != null) {
@@ -40,13 +44,20 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<Pedido> criarPedido(@RequestBody PedidoRequestDTO dto, Authentication authentication) {
-        
+    public ResponseEntity<PedidoResponseDTO> criarPedido(@Valid @RequestBody PedidoRequestDTO dto,
+            Authentication authentication) {
+
         // Extrai o e-mail do cliente logado diretamente do Token JWT
         String emailCliente = authentication.getName();
 
         Pedido novoPedido = pedidoService.criarPedido(dto, emailCliente);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoPedido);
+        PedidoResponseDTO responseDTO = new PedidoResponseDTO(
+                novoPedido.getId(),
+                novoPedido.getStatus().toString(),
+                novoPedido.getValorTotal(),
+                novoPedido.getCanalPedido().toString(),
+                novoPedido.getDataCriacao());
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
 }
