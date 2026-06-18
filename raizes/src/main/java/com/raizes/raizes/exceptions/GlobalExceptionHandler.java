@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
     // Captura nossos erros de Regra de Negócio (ex: Sem estoque) e devolve o Erro
-    // 409
     @ExceptionHandler(RegraNegocioException.class)
     public ResponseEntity<PadraoError> handleRegraNegocioException(RegraNegocioException e,
             HttpServletRequest request) {
@@ -47,15 +46,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex,
             HttpServletRequest request) {
 
-        // Pega todos os erros (ex: canalPedido faltando) e coloca no padrão de
-        // "details"
         List<Map<String, String>> details = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
                 .map(error -> Map.of("field", error.getField(), "issue", error.getDefaultMessage()))
                 .collect(Collectors.toList());
 
-        // Monta o JSON exato no padrão exigido pelo roteiro
         Map<String, Object> erroPadronizado = Map.of(
                 "error", "ERRO_DE_VALIDACAO",
                 "message", "Um ou mais campos obrigatórios estão ausentes ou inválidos",

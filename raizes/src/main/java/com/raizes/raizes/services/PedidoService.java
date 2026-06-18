@@ -80,16 +80,11 @@ public class PedidoService {
         pagamento.setMetodo(dto.formaPagamento());
 
         // PASSO 2: Cenário Negativo (O Gateway Recusou o Pagamento)
-        // Simulamos a recusa caso o cliente envie a palavra "RECUSADO"
         if ("RECUSADO".equalsIgnoreCase(dto.formaPagamento())) {
 
             pagamento.setStatusPagamento(StatusPagamentoEnum.RECUSADO);
             pedido.setPagamento(pagamento);
-
-            // A regra exige que o status do pedido reflita o erro
             pedido.setStatus(StatusPedidoEnum.CANCELADO);
-
-            // A regra exige que o sistema "registre a falha", por isso salvamos no banco
             pedidoRepository.save(pedido);
 
             // PASSO 3: Notifica o usuário na tela interrompendo a resposta com um Erro 400
@@ -98,7 +93,6 @@ public class PedidoService {
         }
 
         // PASSO 4: Cenário Positivo (O Gateway Aprovou o Pagamento)
-        // Se a forma de pagamento for qualquer outra (PIX, CARTAO, etc.), aprovamos
         pagamento.setStatusPagamento(StatusPagamentoEnum.APROVADO);
         pedido.setPagamento(pagamento);
 

@@ -24,17 +24,13 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.csrf(csrf -> csrf.disable())
-        // Configura a API para ser Stateless (não guarda sessão, usa apenas o Token)
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(req -> {
-          // Libera APENAS a rota de login
           req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
           req.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
           req.requestMatchers("/error").permitAll();
-          // Bloqueia todo o resto (exige token)
           req.anyRequest().authenticated();
         })
-        // Adiciona o nosso Filtro ANTES do filtro padrão do Spring
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
         .build();
   }

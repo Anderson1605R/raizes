@@ -20,7 +20,6 @@ public class Estoque {
     @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 
-    // Campo vital para a regra de negócio do controle descentralizado
     @Column(nullable = false)
     private Integer quantidade;
 

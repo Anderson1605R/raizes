@@ -14,7 +14,6 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    // Lê uma chave secreta do seu application.properties (ou usa um padrão caso não encontre)
     @Value("${api.security.token.secret:raizes-secreta-123}")
     private String secret;
 
@@ -45,8 +44,7 @@ public class TokenService {
             return "";
         }
     }
-
-    // O Token expira em 2 horas
+    
     private Instant gerarDataExpiracao() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
