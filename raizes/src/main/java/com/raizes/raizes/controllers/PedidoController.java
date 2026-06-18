@@ -1,7 +1,7 @@
 package com.raizes.raizes.controllers;
 
-import com.raizes.raizes.repository.PedidoRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +17,7 @@ import com.raizes.raizes.dto.PedidoRequestDTO;
 import com.raizes.raizes.dto.PedidoResponseDTO;
 import com.raizes.raizes.model.CanalEnum;
 import com.raizes.raizes.model.Pedido;
+import com.raizes.raizes.repository.PedidoRepository;
 import com.raizes.raizes.services.PedidoService;
 
 import jakarta.validation.Valid;
@@ -34,13 +35,29 @@ public class PedidoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> listarPedidos(@RequestParam(required = false) CanalEnum canalPedido) {
+    public ResponseEntity<List<PedidoResponseDTO>> listarPedidos(
+            @RequestParam(required = false) CanalEnum canalPedido) {
+
+        List<Pedido> pedidos;
+
         if (canalPedido != null) {
             // Filtra os pedidos se a pessoa usar ?canalPedido=TOTEM
-            return ResponseEntity.ok(pedidoRepository.findByCanalPedido(canalPedido));
+            pedidos = pedidoRepository.findByCanalPedido(canalPedido);
+        } else {
+            // Se não passar filtro, devolve todos
+            pedidos = pedidoRepository.findAll();
         }
-        // Se não passar filtro, devolve todos
-        return ResponseEntity.ok(pedidoRepository.findAll());
+
+        List<PedidoResponseDTO> listaDTO = pedidos.stream()
+                .map(p -> new PedidoResponseDTO(
+                        p.getId(),
+                        p.getStatus().toString(),
+                        p.getValorTotal(),
+                        p.getCanalPedido().toString(),
+                        p.getDataCriacao()))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
     }
 
     @PostMapping

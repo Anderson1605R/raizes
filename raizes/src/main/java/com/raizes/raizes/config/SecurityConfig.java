@@ -29,7 +29,8 @@ public class SecurityConfig {
         .authorizeHttpRequests(req -> {
           // Libera APENAS a rota de login
           req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
-          req.requestMatchers("/error").permitAll(); 
+          req.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
+          req.requestMatchers("/error").permitAll();
           // Bloqueia todo o resto (exige token)
           req.anyRequest().authenticated();
         })
@@ -37,10 +38,13 @@ public class SecurityConfig {
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
         .build();
   }
+
   @Bean
-    public org.springframework.security.authentication.AuthenticationManager authenticationManager(org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-    }
+  public org.springframework.security.authentication.AuthenticationManager authenticationManager(
+      org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration configuration)
+      throws Exception {
+    return configuration.getAuthenticationManager();
+  }
 
   @Bean
   public PasswordEncoder passwordEncoder() {

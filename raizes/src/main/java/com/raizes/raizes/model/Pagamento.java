@@ -1,5 +1,7 @@
 package com.raizes.raizes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Pagamento {
     // A qual pedido este pagamento se refere
     @OneToOne
     @JoinColumn(name = "pedido_id", nullable = false)
+    @JsonIgnore
     private Pedido pedido;
 
     @Enumerated(EnumType.STRING)

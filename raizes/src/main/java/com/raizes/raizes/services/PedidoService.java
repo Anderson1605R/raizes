@@ -74,16 +74,39 @@ public class PedidoService {
         pedido.setValorTotal(valorTotal);
 
         // Mock de Pagamento e Atualização de Status
+        // PASSO 1: Cria o registro do pagamento
         Pagamento pagamento = new Pagamento();
         pagamento.setPedido(pedido);
         pagamento.setMetodo(dto.formaPagamento());
 
-        pagamento.setStatusPagamento(StatusPagamentoEnum.APROVADO);
+        // PASSO 2: Cenário Negativo (O Gateway Recusou o Pagamento)
+        // Simulamos a recusa caso o cliente envie a palavra "RECUSADO"
+        if ("RECUSADO".equalsIgnoreCase(dto.formaPagamento())) {
 
+            pagamento.setStatusPagamento(StatusPagamentoEnum.RECUSADO);
+            pedido.setPagamento(pagamento);
+
+            // A regra exige que o status do pedido reflita o erro
+            pedido.setStatus(StatusPedidoEnum.CANCELADO);
+
+            // A regra exige que o sistema "registre a falha", por isso salvamos no banco
+            pedidoRepository.save(pedido);
+
+            // PASSO 3: Notifica o usuário na tela interrompendo a resposta com um Erro 400
+            throw new IllegalArgumentException(
+                    "Pagamento recusado pelo gateway externo. Pedido registrado com status CANCELADO.");
+        }
+
+        // PASSO 4: Cenário Positivo (O Gateway Aprovou o Pagamento)
+        // Se a forma de pagamento for qualquer outra (PIX, CARTAO, etc.), aprovamos
+        pagamento.setStatusPagamento(StatusPagamentoEnum.APROVADO);
         pedido.setPagamento(pagamento);
 
-        // Atualiza o status do pedido porque o pagamento mock foi aprovado
+        // Atualiza a linha do tempo do pedido para a cozinha
         pedido.setStatus(StatusPedidoEnum.PREPARO);
+
+        System.out.println(
+                "AUDITORIA: Novo pedido criado com sucesso pelo cliente " + emailCliente + " via " + dto.canalPedido());
 
         System.out.println(
                 "AUDITORIA: Novo pedido criado com sucesso pelo cliente " + emailCliente + " via " + dto.canalPedido());
