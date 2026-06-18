@@ -1,0 +1,1131 @@
+{
+  "info": {
+    "_postman_id": "66d264aa-dc85-494d-8b25-3733be5de6b5",
+    "name": "Testes Projeto Final",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27670227"
+  },
+  "item": [
+    {
+      "name": "T01 - Criar Pedido com Sucesso",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"canalPedido\": \"TOTEM\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 1, \"quantidade\": 2 },\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T01 - Criar Pedido com Sucesso",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canalPedido\": \"TOTEM\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 1, \"quantidade\": 2 },\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:11:30 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 9,\n    \"status\": \"PREPARO\",\n    \"total\": 24,\n    \"canalPedido\": \"TOTEM\",\n    \"dataCriacao\": \"2026-06-18T11:11:30.0344707\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "T02 - Consultar Cardapio com Sucesso",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/produtos?unidadeId=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "produtos"
+          ],
+          "query": [
+            {
+              "key": "unidadeId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T02 - Consultar Cardapio com Sucesso",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/produtos?unidadeId=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "produtos"
+              ],
+              "query": [
+                {
+                  "key": "unidadeId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:14:40 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"descricao\": \"Deliciosa coxinha com massa de macaxeira e recheio de frango desfiado\",\n        \"id\": 1,\n        \"nome\": \"Coxinha de Macaxeira\",\n        \"precoBase\": 8.5\n    },\n    {\n        \"descricao\": \"Cuscuz tradicional nordestino acompanhado de carne de sol na manteiga de garrafa\",\n        \"id\": 2,\n        \"nome\": \"Cuscuz com Carne de Sol\",\n        \"precoBase\": 15.9\n    },\n    {\n        \"descricao\": \"Copo de 500ml de suco natural de cajá\",\n        \"id\": 3,\n        \"nome\": \"Suco de Cajá\",\n        \"precoBase\": 7\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "T03 - Login com Sucesso",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joao.cliente@email.com\",\r\n  \"senha\": \"senha123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/auth/login",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T03 - Login com Sucesso",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"joao.cliente@email.com\",\r\n  \"senha\": \"senha123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "188"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 13:51:15 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM"
+        }
+      ]
+    },
+    {
+      "name": "T04 - Pagamento Mock Aprovado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"CARTAO_CREDITO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T04 - Pagamento Mock Aprovado",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"CARTAO_CREDITO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:18:18 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 10,\n    \"status\": \"PREPARO\",\n    \"total\": 7,\n    \"canalPedido\": \"APP\",\n    \"dataCriacao\": \"2026-06-18T11:18:18.8615879\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "T05 - Consultar Pedidos por Canal.",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T05 - Consultar Pedidos por Canal.",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 13:58:35 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T10:09:48.342674\"\n    },\n    {\n        \"id\": 2,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T10:14:04.920357\"\n    },\n    {\n        \"id\": 3,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T11:11:59.382419\"\n    },\n    {\n        \"id\": 4,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:18:42.938066\"\n    },\n    {\n        \"id\": 7,\n        \"status\": \"PREPARO\",\n        \"total\": 15.5,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:51:23.318147\"\n    },\n    {\n        \"id\": 8,\n        \"status\": \"PREPARO\",\n        \"total\": 15.5,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:51:41.294629\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "T06 - Listar Todos os Pedidos",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T06 - Listar Todos os Pedidos",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:50:24 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T10:09:48.342674\"\n    },\n    {\n        \"id\": 2,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T10:14:04.920357\"\n    },\n    {\n        \"id\": 3,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T11:11:59.382419\"\n    },\n    {\n        \"id\": 4,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:18:42.938066\"\n    },\n    {\n        \"id\": 7,\n        \"status\": \"PREPARO\",\n        \"total\": 15.5,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:51:23.318147\"\n    },\n    {\n        \"id\": 8,\n        \"status\": \"PREPARO\",\n        \"total\": 15.5,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-17T12:51:41.294629\"\n    },\n    {\n        \"id\": 9,\n        \"status\": \"PREPARO\",\n        \"total\": 24,\n        \"canalPedido\": \"TOTEM\",\n        \"dataCriacao\": \"2026-06-18T11:11:30.034471\"\n    },\n    {\n        \"id\": 10,\n        \"status\": \"PREPARO\",\n        \"total\": 7,\n        \"canalPedido\": \"APP\",\n        \"dataCriacao\": \"2026-06-18T11:18:18.861588\"\n    },\n    {\n        \"id\": 11,\n        \"status\": \"CANCELADO\",\n        \"total\": 7,\n        \"canalPedido\": \"APP\",\n        \"dataCriacao\": \"2026-06-18T11:37:25.486686\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "T07 - Erro: Acesso Negado (Sem Token)",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"canalPedido\": \"TOTEM\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 1, \"quantidade\": 2 },\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/pedidos",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T03 - Erro: Acesso Negado (Sem Token)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canalPedido\": \"TOTEM\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 1, \"quantidade\": 2 },\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/pedidos",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:01:30 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": \"2026-06-18T14:01:30.297Z\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"path\": \"/pedidos\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "T08 - Erro: Pagamento Mock Recusado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"RECUSADO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T08 - Pagamento Mock Recusado",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"RECUSADO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:37:25 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"DADOS_INVALIDOS\",\n    \"message\": \"Pagamento recusado pelo gateway externo. Pedido registrado com status CANCELADO.\",\n    \"path\": \"/pedidos\",\n    \"timestamp\": \"2026-06-18T11:37:25.5797283\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "T09 - Erro: Falta de Estoque",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 999 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T09 - Erro: Falta de Estoque",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canalPedido\": \"APP\",\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 999 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:53:49 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"ESTOQUE_INSUFICIENTE_OU_CONFLITO\",\n    \"message\": \"ESTOQUE_INSUFICIENTE: Não há quantidade suficiente para o produto Suco de Cajá\",\n    \"path\": \"/pedidos\",\n    \"timestamp\": \"2026-06-18T11:53:49.5898999\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "T10 - Erro: Canal de Pedido Ausente",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgUmFpemVzIGRvIE5vcmRlc3RlIiwic3ViIjoiam9hby5jbGllbnRlQGVtYWlsLmNvbSIsImV4cCI6MTc4MTc5Nzg3NX0.-MDAJlkBu6kq12hwjAv2hkbPmxnfhbvZSVeUh9SYMBM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "T10 - Erro: Canal de Pedido Ausente",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"unidadeId\": 1,\r\n  \"itens\": [\r\n    { \"produtoId\": 3, \"quantidade\": 1 }\r\n  ],\r\n  \"formaPagamento\": \"PIX\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "0"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 18 Jun 2026 14:56:01 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"path\": \"/pedidos\",\n    \"details\": [\n        {\n            \"field\": \"canalPedido\",\n            \"issue\": \"não deve ser nulo\"\n        }\n    ],\n    \"timestamp\": \"2026-06-18T14:56:01.010254300Z\",\n    \"error\": \"ERRO_DE_VALIDACAO\",\n    \"message\": \"Um ou mais campos obrigatórios estão ausentes ou inválidos\"\n}"
+        }
+      ]
+    }
+  ]
+}
